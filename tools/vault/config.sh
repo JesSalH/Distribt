@@ -2,6 +2,8 @@
 
 ## this is the code for the first part of the tutorial. 
 ## example code for get KeyValue secrets. 
+## esto no es para get es para set!! -> mete las variables username y 
+## password en un secrets store llamado rabbitmq dentro del docker vault
 docker exec -it vault vault kv put secret/rabbitmq username=DistribtAdmin password=DistribtPass
 
 

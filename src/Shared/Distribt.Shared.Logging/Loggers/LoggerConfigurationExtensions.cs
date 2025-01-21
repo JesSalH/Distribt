@@ -21,6 +21,5 @@ public static class LoggerConfigurationExtensions
             ? loggerConfiguration.WriteTo.Graylog(graylogLoggerConfiguration.Host, graylogLoggerConfiguration.Port, 
                 TransportType.Udp, graylogLoggerConfiguration.MinimumLevel)
             : loggerConfiguration;
-    }
-    
+    }    
 }

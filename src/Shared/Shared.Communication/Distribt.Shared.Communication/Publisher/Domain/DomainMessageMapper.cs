@@ -15,7 +15,7 @@ public class DomainMessageMapper
             BindingFlags.Static | BindingFlags.NonPublic
         );
         
-        var buildWrapperGenericMethodInfo = buildWrapperMethodInfo?.MakeGenericMethod(new[] {message.GetType()});
+        var buildWrapperGenericMethodInfo = buildWrapperMethodInfo?.MakeGenericMethod(message.GetType());
         var wrapper = buildWrapperGenericMethodInfo?.Invoke(
             null,
             new[]

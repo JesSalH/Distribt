@@ -48,7 +48,6 @@ public class RabbitMQMessagePublisher<TMessage> : IExternalMessagePublisher<TMes
         return Task.CompletedTask;
     }
 
-
    
     private void PublishSingle(TMessage message, IModel model, string? routingKey)
     {

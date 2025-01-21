@@ -56,6 +56,7 @@ public static class ServiceBus
     {
         serviceCollection.AddRabbitMQ(GetRabbitMqSecretCredentials, GetRabbitMQHostName, configuration,
             "DomainConsumer");
+
         serviceCollection.AddRabbitMqConsumer<DomainMessage>();
     }
 

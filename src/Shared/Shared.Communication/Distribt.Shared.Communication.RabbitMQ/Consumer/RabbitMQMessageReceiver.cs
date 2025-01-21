@@ -14,15 +14,24 @@ public class RabbitMQMessageReceiver : DefaultBasicConsumer
     private ulong DeliveryTag { get; set; }
     private readonly IHandleMessage _handleMessage;
 
-    public RabbitMQMessageReceiver(IModel channel, ISerializer serializer, IHandleMessage handleMessage)
+    public RabbitMQMessageReceiver(
+        IModel channel, 
+        ISerializer serializer, 
+        IHandleMessage handleMessage)
     {
         _channel = channel;
         _serializer = serializer;
         _handleMessage = handleMessage;
     }
 
-    public override void HandleBasicDeliver(string consumerTag, ulong deliveryTag, bool redelivered, string exchange,
-        string routingKey, IBasicProperties properties, ReadOnlyMemory<byte> body)
+    public override void HandleBasicDeliver(
+        string consumerTag, 
+        ulong deliveryTag, 
+        bool redelivered, 
+        string exchange,
+        string routingKey, 
+        IBasicProperties properties, 
+        ReadOnlyMemory<byte> body)
     {
         MessageType = Type.GetType(properties.Type)!;
         MessageBody = body.ToArray();

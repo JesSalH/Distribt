@@ -28,8 +28,12 @@ internal class VaultSecretManager : ISecretManager
         VaultClient client = new VaultClient(new VaultClientSettings(_vaultSettings.VaultUrl,
             new TokenAuthMethodInfo(_vaultSettings.TokenApi)));
 
+
+        //esta linea es completamente infumable
         Secret<SecretData> kv2Secret = await client.V1.Secrets.KeyValue.V2
             .ReadSecretAsync(path: path, mountPoint: "secret");
+
+        // no se porque aqui se mete en data.data
         var returnedData = kv2Secret.Data.Data;
 
         return returnedData.ToObject<T>();
@@ -40,11 +44,13 @@ internal class VaultSecretManager : ISecretManager
         VaultClient client = new VaultClient(new VaultClientSettings(_vaultSettings.VaultUrl,
             new TokenAuthMethodInfo(_vaultSettings.TokenApi)));
 
+        //esta fumada se entiende mejor
         Secret<UsernamePasswordCredentials> secret = await client.V1.Secrets.RabbitMQ
             .GetCredentialsAsync(roleName, "rabbitmq");
         return secret.Data;
     }
 
+    //la gilipollez de turno
     private string GetTokenFromEnvironmentVariable()
         => Environment.GetEnvironmentVariable("VAULT-TOKEN") 
            ?? throw new NotImplementedException("please specify the VAULT-TOKEN env_var");

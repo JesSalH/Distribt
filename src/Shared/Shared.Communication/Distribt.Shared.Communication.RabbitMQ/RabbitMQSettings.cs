@@ -1,5 +1,3 @@
-using RabbitMQ.Client;
-
 namespace Distribt.Shared.Communication.RabbitMQ;
 
 public class RabbitMQSettings

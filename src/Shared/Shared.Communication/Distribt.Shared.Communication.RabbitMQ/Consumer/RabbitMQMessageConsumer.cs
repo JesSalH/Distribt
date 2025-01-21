@@ -15,7 +15,10 @@ public class RabbitMQMessageConsumer<TMessage> : IMessageConsumer<TMessage>
     private readonly IHandleMessage _handleMessage;
 
 
-    public RabbitMQMessageConsumer(ISerializer serializer, IOptions<RabbitMQSettings> settings, IHandleMessage handleMessage)
+    public RabbitMQMessageConsumer(
+        ISerializer serializer, 
+        IOptions<RabbitMQSettings> settings, 
+        IHandleMessage handleMessage)
     {
         _settings = settings.Value;
         _serializer = serializer;

@@ -16,6 +16,7 @@ public static class IntegrationMessageMapper
         );
         
         var buildWrapperGenericMethodInfo = buildWrapperMethodInfo?.MakeGenericMethod(new[] {message.GetType()});
+
         var wrapper = buildWrapperGenericMethodInfo?.Invoke(
             null,
             new[]
